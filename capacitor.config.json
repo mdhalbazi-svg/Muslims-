@@ -1,0 +1,14 @@
+{
+  "appId": "com.islamiclife.ultimate",
+  "appName": "Islamic Life",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon",
+      "iconColor": "#0b5d45"
+    }
+  }
+}

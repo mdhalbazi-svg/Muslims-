@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07533f"><title>اسلامک لائف | Islamic Life</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div><small>جامع اسلامی رہنما</small><h1>اسلامک لائف</h1></div><button id="themeBtn" aria-label="تھیم تبدیل کریں">◐</button></header>
+<section class="hero">
+ <div class="heroTop"><span id="hijriDate">ہجری تاریخ</span><span id="gregDate"></span></div>
+ <h2 id="nextPrayer">نماز کے اوقات</h2><p id="prayerStatus">مقام منتخب کریں یا دستی طور پر شہر درج کریں۔</p>
+ <div class="prayerRow" id="prayerRow"></div>
+</section>
+<div class="search"><input id="searchInput" placeholder="قرآن، دعا یا ایپ کے حصے تلاش کریں"><button id="searchBtn">تلاش</button></div>
+<nav class="tabs" id="tabs">
+<button data-view="home" class="active">ہوم</button><button data-view="quran">قرآن</button><button data-view="hadith">حدیث</button><button data-view="tools">اوزار</button><button data-view="diary">ڈائری</button>
+</nav>
+<main id="content"></main>
+<footer>اسلامی مواد کی صحت اور حوالہ جات کی تصدیق ضروری ہے۔</footer>
+<script src="src/prayer.js"></script><script src="src/core.js"></script><script src="src/app.js"></script>
+</body></html>

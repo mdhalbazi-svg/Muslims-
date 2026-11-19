@@ -1,0 +1,10 @@
+{
+  "name": "Islamic Life",
+  "short_name": "Islamic Life",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f4f7f4",
+  "theme_color": "#07533f",
+  "lang": "ur",
+  "dir": "rtl"
+}
