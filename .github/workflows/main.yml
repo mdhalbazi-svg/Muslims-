@@ -25,17 +25,26 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
 
-      - name: Setup Java
+      - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
+
+      - name: Verify Java and Gradle Environment
+        run: |
+          echo "JAVA_HOME=$JAVA_HOME"
+          java -version
+          javac -version
+          which java
+          which javac
 
       - name: Install Android SDK Packages
         run: |
           SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -n 1)
+
           if [ -z "$SDKMANAGER" ]; then
             echo "Android SDK manager not found"
             exit 1
@@ -54,7 +63,11 @@ jobs:
             echo "ERROR: package.json missing. Extract the complete app ZIP into repository root."
             exit 1
           }
-          test -f capacitor.config.json
+
+          test -f capacitor.config.json || {
+            echo "ERROR: capacitor.config.json missing"
+            exit 1
+          }
 
       - name: Install Dependencies
         run: npm install
@@ -74,10 +87,16 @@ jobs:
       - name: Sync Android
         run: npx cap sync android
 
-      - name: Build APK and AAB
+      - name: Verify Android Gradle Java
         run: |
           cd android
           chmod +x gradlew
+          ./gradlew --stop
+          ./gradlew --version
+
+      - name: Build APK and AAB
+        run: |
+          cd android
           ./gradlew assembleDebug
           ./gradlew bundleRelease
 
@@ -88,4 +107,5 @@ jobs:
           path: |
             android/app/build/outputs/apk/**/*.apk
             android/app/build/outputs/bundle/**/*.aab
-            
+          if-no-files-found: error
+          
